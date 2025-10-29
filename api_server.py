@@ -153,6 +153,11 @@ def sync_cameras_from_supabase(force: bool = False) -> None:
                 'status': camera.get('status', 'offline')
             }
 
+        # Proteção: NÃO sobrescrever se Supabase retornar vazio e já temos câmeras localmente
+        if len(new_config) == 0 and len(cameras_config) > 0:
+            logger.warning("Supabase returned 0 cameras but we have %d locally - keeping local config", len(cameras_config))
+            return
+
         with config_lock:
             cameras_config = new_config
         last_camera_sync = now
