@@ -32,7 +32,7 @@ CORS(app, resources={
     r"/*": {
         "origins": "*",
         "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-        "allow_headers": ["Content-Type", "Authorization"],
+        "allow_headers": ["Content-Type", "Authorization", "ngrok-skip-browser-warning"],
         "expose_headers": ["Content-Type"]
     }
 })
