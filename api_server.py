@@ -808,4 +808,4 @@ if __name__ == "__main__":
     startup_thread = threading.Thread(target=auto_start_online_cameras, daemon=True)
     startup_thread.start()
 
-    app.run(host="0.0.0.0", port=5000, debug=False, threaded=True)
+    app.run(host="0.0.0.0", port=5000, debug=False, threaded=True, ssl_context=('cert.pem', 'key.pem'))
