@@ -1,0 +1,17 @@
+[Unit]
+Description=Ngrok Tunnel Service
+After=network.target parking-api.service
+Requires=parking-api.service
+
+[Service]
+Type=simple
+User=rafaelsantis
+WorkingDirectory=/home/rafaelsantis/ccr-backend
+ExecStart=/usr/local/bin/ngrok http 5000 --log stdout
+Restart=always
+RestartSec=10
+StandardOutput=append:/home/rafaelsantis/ccr-backend/ngrok.log
+StandardError=append:/home/rafaelsantis/ccr-backend/ngrok.log
+
+[Install]
+WantedBy=multi-user.target
