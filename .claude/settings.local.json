@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:docs.ultralytics.com)",
+      "Bash(mkdir -p parking_poc/src parking_poc/data parking_poc/output)",
+      "Bash(cat bounding_boxes.json)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
