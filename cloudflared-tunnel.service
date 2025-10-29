@@ -1,0 +1,17 @@
+[Unit]
+Description=Cloudflare Tunnel Service
+After=network.target parking-api.service
+Requires=parking-api.service
+
+[Service]
+Type=simple
+User=rafaelsantis
+WorkingDirectory=/home/rafaelsantis/ccr-backend
+ExecStart=/usr/bin/cloudflared tunnel --url http://localhost:5000
+Restart=always
+RestartSec=10
+StandardOutput=append:/home/rafaelsantis/ccr-backend/cloudflared.log
+StandardError=append:/home/rafaelsantis/ccr-backend/cloudflared.log
+
+[Install]
+WantedBy=multi-user.target

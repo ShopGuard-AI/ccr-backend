@@ -1,0 +1,17 @@
+[Unit]
+Description=Parking Monitoring API Service
+After=network.target
+
+[Service]
+Type=simple
+User=rafaelsantis
+WorkingDirectory=/home/rafaelsantis/ccr-backend
+Environment="PATH=/home/rafaelsantis/ccr-backend/venv/bin"
+ExecStart=/home/rafaelsantis/ccr-backend/venv/bin/python /home/rafaelsantis/ccr-backend/api_server.py
+Restart=always
+RestartSec=10
+StandardOutput=append:/home/rafaelsantis/ccr-backend/api.log
+StandardError=append:/home/rafaelsantis/ccr-backend/api.log
+
+[Install]
+WantedBy=multi-user.target
