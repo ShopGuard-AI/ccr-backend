@@ -27,18 +27,13 @@ logger = logging.getLogger(__name__)
 app = Flask(__name__)
 
 # Configuração CORS específica para produção
+# Permite qualquer origem para POC (em produção, especifique domínios exatos)
 CORS(app, resources={
-    r"/api/*": {
-        "origins": [
-            "http://localhost:5173",
-            "http://localhost:3000",
-            "https://front-end-costa-silva-ccr-poc-tkkg.vercel.app",
-            "https://*.vercel.app"
-        ],
+    r"/*": {
+        "origins": "*",
         "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
         "allow_headers": ["Content-Type", "Authorization"],
-        "expose_headers": ["Content-Type"],
-        "supports_credentials": True
+        "expose_headers": ["Content-Type"]
     }
 })
 
